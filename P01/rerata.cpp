@@ -14,7 +14,7 @@ int main() {
     // TODO 2: hitung rata-rata. Ingat, int dibagi int membuang pecahannya.
     //         Pakai tipe double dan pastikan pembagiannya bukan pembagian bilangan bulat.
     double rerata = 0;
-    rerata = static_cast<double>(jumlah) / 3;
+    rerata = jumlah / 3.0;
 
     // TODO 3: cetak hasil dengan dua angka di belakang koma, sama seperti versi Python.
     std::cout << std::fixed << std::setprecision(2);
