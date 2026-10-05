@@ -1,6 +1,4 @@
-# Hasil build tidak ikut disimpan ke Git
+# Hasil build tidak ikut disimpan ke Git buat ubah message commit aja
 *.exe
 *.o
 *.out
-copy
-copy2
