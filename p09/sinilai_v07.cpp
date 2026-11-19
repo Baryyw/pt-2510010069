@@ -210,7 +210,7 @@ void perbaruiPenghitung(char awal, int& a, int& b, int& c, int& d, int& e) {
     }
 }
 
-// Mencetak sebaran huruf mutu; semua parameter pass by value karena hanya dibaca.
+// Mencetak sebaran huruf mutu; semua parameter pass by value karena hanya dibaca..
 void cetakSebaran(int a, int b, int c, int d, int e) {
     const string huruf[5] = {"A", "B", "C", "D", "E"};
     const int banyak[5] = {a, b, c, d, e};
