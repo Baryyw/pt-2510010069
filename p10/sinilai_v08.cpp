@@ -1,6 +1,7 @@
 // SiNilai v0.8: semua mahasiswa disimpan dalam larik, lalu diolah lewat fungsi berparameter larik.
 // Semua fungsi v0.7 dipakai apa adanya (bacaJumlah hanya ditambah batas atas MAKS). Fungsi main,
 // prototipe, dan tukarAngka/tukarTeks sudah jadi. Enam TODO adalah fungsi baru yang menerima larik.
+// Sampai semua TODO selesai, baseline kelas memberi warning unused parameter; itu wajar.
 #include <cctype>
 #include <iomanip>
 #include <iostream>
@@ -236,7 +237,7 @@ void cetakSebaran(int a, int b, int c, int d, int e) {
 
 // ---------- Fungsi baru v0.8 ----------
 
-// Mengembalikan rata-rata seluruh kotak; fungsi ini hanya membaca larik.
+// TODO 1: jumlahkan nilai_akhir[0] sampai nilai_akhir[jumlah - 1], kembalikan rata-ratanya.
 double rerataKelas(const double nilai_akhir[], int jumlah) {
     double total = 0;
     for (int i = 0; i < jumlah; i++) {
@@ -245,7 +246,7 @@ double rerataKelas(const double nilai_akhir[], int jumlah) {
     return total / jumlah;
 }
 
-// Menghitung kotak yang nilainya >= 60.
+// TODO 2: hitung berapa kotak yang nilainya >= 60.
 int hitungLulus(const double nilai_akhir[], int jumlah) {
     int lulus = 0;
     for (int i = 0; i < jumlah; i++) {
@@ -256,7 +257,8 @@ int hitungLulus(const double nilai_akhir[], int jumlah) {
     return lulus;
 }
 
-// Mengembalikan indeks nilai tertinggi mulai kotak mulai. Nilai sama: yang lebih dulu menang (> bukan >=).
+// TODO 3: kembalikan indeks nilai tertinggi di antara kotak mulai sampai jumlah - 1
+// (pola indeksTertinggi di urutkan.cpp). Nilai sama: pilih yang lebih dulu, seperti v0.7.
 int indeksTertinggi(const double nilai_akhir[], int mulai, int jumlah) {
     int tertinggi = mulai;
     for (int i = mulai + 1; i < jumlah; i++) {
@@ -279,12 +281,13 @@ void tukarTeks(string& a, string& b) {
     b = sementara;
 }
 
-// Selection sort menurun yang stabil: kotak tertinggi digeser ke posisi i lewat tukar tetangga,
-// sehingga mahasiswa bernilai sama tetap berurutan sesuai urutan baca. Keempat larik sejajar
-// ditukar bersama dengan indeks yang sama.
+// TODO 4: selection sort menurun (pola urutkanMenurun di urutkan.cpp). Ingat: ada EMPAT larik
+// sejajar yang harus ditukar bersama (nilai_akhir dengan tukarAngka; nama, npm, huruf dengan
+// tukarTeks).
 void urutkanMenurun(string nama[], string npm[], double nilai_akhir[], string huruf[], int jumlah) {
     for (int i = 0; i < jumlah - 1; i++) {
         int t = indeksTertinggi(nilai_akhir, i, jumlah);
+        // geser kotak tertinggi ke posisi i lewat tukar tetangga (nilai sama tetap urut baca)
         for (int k = t; k > i; k--) {
             tukarAngka(nilai_akhir[k], nilai_akhir[k - 1]);
             tukarTeks(nama[k], nama[k - 1]);
@@ -294,7 +297,9 @@ void urutkanMenurun(string nama[], string npm[], double nilai_akhir[], string hu
     }
 }
 
-// Mencetak peringkat kelas; right ditulis lagi karena left tertinggal dari cetakBaris.
+// TODO 5: cetak judul "=== Peringkat Kelas ===" (didahului baris kosong), lalu satu baris per
+// mahasiswa: nomor urut rata kanan lebar 2, titik, NPM, nama rata kiri lebar 20, nilai rata kanan
+// lebar 7, huruf.
 void cetakPeringkat(const string nama[], const string npm[], const double nilai_akhir[], const string huruf[], int jumlah) {
     cout << "\n=== Peringkat Kelas ===\n";
     for (int i = 0; i < jumlah; i++) {
@@ -303,7 +308,8 @@ void cetakPeringkat(const string nama[], const string npm[], const double nilai_
     }
 }
 
-// Menghitung sebaran huruf mutu lewat perbaruiPenghitung untuk tiap kotak.
+// TODO 6: untuk setiap kotak, panggil perbaruiPenghitung(huruf[i][0], a, b, c, d, e)
+// supaya lima penghitung milik main bertambah.
 void hitungSebaran(const string huruf[], int jumlah, int& a, int& b, int& c, int& d, int& e) {
     for (int i = 0; i < jumlah; i++) {
         perbaruiPenghitung(huruf[i][0], a, b, c, d, e);
